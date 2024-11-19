@@ -20,7 +20,6 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public Category findCategoryById(Long id) {
-        return entityManager.find(Category.class, id);
     }
 
     @Override
@@ -36,8 +35,6 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public void deleteCategory(Long id) {
         Category category = entityManager.find(Category.class, id);
-        if (category != null) {
-            entityManager.remove(category);
-        }
+        entityManager.remove(category);
     }
 }

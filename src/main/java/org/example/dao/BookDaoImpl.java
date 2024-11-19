@@ -20,7 +20,6 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public Book findBookById(Long id) {
-        return entityManager.find(Book.class, id);
     }
 
     @Override
@@ -36,8 +35,6 @@ public class BookDaoImpl implements BookDao {
     @Override
     public void deleteBook(Long id) {
         Book book = entityManager.find(Book.class, id);
-        if (book != null) {
-            entityManager.remove(book);
-        }
+        entityManager.remove(book);
     }
 }

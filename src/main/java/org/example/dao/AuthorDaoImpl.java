@@ -20,7 +20,6 @@ public class AuthorDaoImpl implements AuthorDao {
 
     @Override
     public Author findAuthorById(Long id) {
-        return entityManager.find(Author.class, id);
     }
 
     @Override
@@ -36,8 +35,6 @@ public class AuthorDaoImpl implements AuthorDao {
     @Override
     public void deleteAuthor(Long id) {
         Author author = entityManager.find(Author.class, id);
-        if (author != null) {
-            entityManager.remove(author);
-        }
+        entityManager.remove(author);
     }
 }
