@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="4" author="kamranbayramov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="book_category"/>
+            </not>
+        </preConditions>
+        <createTable tableName="book_category">
+            <column name="book_id" type="bigint"/>
+            <column name="category_id" type="bigint"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="book_category"
+                baseColumnNames="book_id"
+                referencedTableName="book"
+                referencedColumnNames="id" constraintName="book_category_book"/>
+
+        <addForeignKeyConstraint
+                baseTableName="book_category"
+                baseColumnNames="category_id"
+                referencedTableName="category"
+                referencedColumnNames="id" constraintName="book_category_category"/>
+    </changeSet>
+
+</databaseChangeLog>
