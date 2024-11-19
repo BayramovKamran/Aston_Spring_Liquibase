@@ -1,12 +1,16 @@
 package org.example.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
-@Data
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "book")
 public class Book {
 
@@ -17,6 +21,7 @@ public class Book {
     @Column(name = "title")
     private String title;
     @ManyToOne
+    @JoinColumn(name = "author_id")
     private Author author;
     @ManyToMany
     @JoinTable(
@@ -24,5 +29,5 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private Set<Category> categories;
+    private List<Category> categories;
 }

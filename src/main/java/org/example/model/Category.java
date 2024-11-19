@@ -1,12 +1,16 @@
 package org.example.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-        import java.util.Set;
+import java.util.List;
 
-@Data
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 @Table(name = "category")
 public class Category {
 
@@ -16,6 +20,6 @@ public class Category {
     private Long id;
     @Column(name = "name")
     private String name;
-    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
-    private Set<Book> books;
+    @ManyToMany(mappedBy = "categories")
+    private List<Book> books;
 }
