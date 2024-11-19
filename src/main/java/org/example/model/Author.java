@@ -3,7 +3,7 @@ package org.example.model;
 import lombok.Data;
 
 import javax.persistence.*;
-        import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -17,5 +17,5 @@ public class Author {
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private List<Book> books;
+    private Set<Book> books;
 }
