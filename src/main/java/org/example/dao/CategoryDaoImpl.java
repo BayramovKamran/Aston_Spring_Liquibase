@@ -15,7 +15,7 @@ public class CategoryDaoImpl implements CategoryDao {
 
     @Override
     public List<Category> findAllCategories() {
-        return entityManager.createQuery("FROM Category", Category.class).getResultList();
+        return entityManager.createQuery("from Category", Category.class).getResultList();
     }
 
     @Override
