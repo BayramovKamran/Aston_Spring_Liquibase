@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,5 +22,5 @@ public class Category {
     @Column(name = "name")
     private String name;
     @ManyToMany(mappedBy = "categories")
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 }

@@ -31,7 +31,7 @@ public class AppConfig {
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(Objects.requireNonNull(env.getProperty("db.driver")));
+        dataSource.setDriverClassName((Objects.requireNonNull(env.getProperty("db.driver"))));
         dataSource.setUrl(env.getProperty("db.url"));
         dataSource.setUsername(env.getProperty("db.username"));
         dataSource.setPassword(env.getProperty("db.password"));
@@ -43,7 +43,7 @@ public class AppConfig {
         LocalContainerEntityManagerFactoryBean entityManager =
                 new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(getDataSource());
-        entityManager.setPackagesToScan("org.example");
+        entityManager.setPackagesToScan("org.example.model");
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManager.setJpaProperties(hibernateProperties());
         return entityManager;
@@ -58,9 +58,8 @@ public class AppConfig {
 
     Properties hibernateProperties() {
         Properties properties = new Properties();
-        properties.put("db.properties", "hibernate.show_sql");
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        properties.put("application.properties", "hibernate.show_sql");
+        properties.setProperty("application.properties", "hibernate.dialect");
         return properties;
     }
 }

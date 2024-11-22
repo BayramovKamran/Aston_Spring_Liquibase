@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,5 +22,5 @@ public class Author {
     @Column(name = "name")
     private String name;
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
-    private Set<Book> books;
+    private List<Book> books = new ArrayList<>();
 }
