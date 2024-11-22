@@ -56,7 +56,7 @@ public class AppConfig {
         return manager;
     }
 
-    Properties hibernateProperties() {
+    public Properties hibernateProperties() {
         Properties properties = new Properties();
         properties.put("application.properties", "hibernate.show_sql");
         properties.setProperty("application.properties", "hibernate.dialect");
