@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @Table(name = "category")
 public class Category {
